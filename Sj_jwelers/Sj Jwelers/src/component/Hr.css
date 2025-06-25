@@ -1,0 +1,15 @@
+.hr-with-svg {
+    /* Set the SVG as the background image */
+    background-image: url('../assets/hr.svg');
+    
+    /* Adjust background size to cover the entire hr element */
+    background-size: cover;
+    
+    /* Set background repeat to no repeat */
+    background-repeat: no-repeat;
+    
+    /* Optional: Adjust other background properties as needed */
+    background-position: center; /* Center the background */
+    height: 50px; /* Set a specific height for the hr */
+    border: none; /* Remove the default hr border */
+  }
