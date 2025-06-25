@@ -8,12 +8,11 @@ This repository contains two independent Node.js + MySQL based backend services:
 ---
 
 ## 📁 Folder Structure
-
-.
+```text
 ├── sj_jewelers/ # Jewelry platform (React + Node.js + MySQL)
 └── nodejs/
     └── news-app-backend/ # News API backend (Node.js + MySQL) for Flutter app
-
+```
 ---
 
 ## 💎 1. SJ_Jewelers (Jewelry Shop Platform)
