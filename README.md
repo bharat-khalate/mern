@@ -86,7 +86,7 @@ This system is designed to:
 
 
 
-## 🗄️ Database Schemahema
+## 🗄️ Database Schema
 
 ![IJRCSIT SQL Diagram](IJRCSIT/journal%20.png)
 
