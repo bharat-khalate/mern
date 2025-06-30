@@ -10,8 +10,9 @@ This repository contains two independent Node.js + MySQL based backend services:
 ## 📁 Folder Structure
 ```text
 ├── sj_jewelers/ # Jewelry platform (React + Node.js + MySQL)
+├── IJRCSIT /# Paper publishing platform 
 └── nodejs/
-    └── news-app-backend/ # News API backend (Node.js + MySQL) for Flutter app
+    └── news-app-backend/ # News API backend (Node.js + PostgreSQL) for Flutter app
 ```
 ---
 
@@ -55,6 +56,92 @@ Install & Run Frontend
 cd sj_jewelers/frontend
 npm install
 npm start
+```
+
+
+
+## 2.IJRCSIT - Paper Publishing Platform
+
+**IJRCSIT** — the *International Journal for Research in Computer Science and Information Technology*. This platform enables researchers to submit, manage, and publish scholarly papers seamlessly.
+
+## 🧠 Purpose
+
+This system is designed to:
+- Allow authors to register and submit their research papers.
+- Enable reviewers to evaluate submissions.
+- Support editors in publishing accepted papers.
+- Showcase published volumes and papers publicly.
+
+---
+
+## 🚀 Features
+
+- 📝 Author registration and login
+- 📤 Paper submission with metadata (title, abstract, authors, etc.)
+- 📚 Volume and issue management
+- ✅ Reviewer assignment and status tracking
+- 📄 PDF document preview and validation
+- 🔍 Public search and view of published papers
+- 🛡️ Role-based authentication (Admin, Reviewer, Author)
+
+
+
+## 🗄️ Database Schemahema
+
+![IJRCSIT SQL Diagram](IJRCSIT/journal%20.png)
+
+
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer         | Technology                     |
+|--------------|---------------------------------|
+| Frontend     | React / Next.js / Tailwind CSS  |
+| Backend      | Node.js / Express / TypeScript  |
+| Database     | PostgreSQL                      |
+| ORM          | Prisma ORM                      |
+| File Storage | Local                  |
+| Auth         | JWT + bcrypt                    |
+| PDF Viewer   | React-PDF-Viewer / Office Embed |
+| Deployment   | Docker         |
+
+---
+
+## 📦 Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/bharat-khalate/mern.git
+cd ijrcsit-platform
+```
+
+## Backend Setup
+cd IJRCSIT/backend
+npm install
+cp .env.example .env
+# Update .env with your DB and JWT credentials
+npx prisma migrate dev
+npm run dev
+
+## Forntend Setup
+cd IJRCSIT/paper-stream-publish
+npm install
+npm run dev
+
+
+## 🔐 Environment Variables
+Set these variables in your .env file:
+
+env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/ijrcsit
+JWT_SECRET=your_jwt_secret
+PORT=5000
+
+
+
 
 📰 2. News App Backend (for Flutter App)
 🔎 Overview
@@ -65,5 +152,4 @@ This is a backend-only Node.js application that powers a Flutter news app. It pr
 Prerequisites
 Node.js & npm
 
-postgres server
-```
+

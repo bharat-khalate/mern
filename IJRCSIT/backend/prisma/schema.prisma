@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init 
+
+enum Status {
+  ACCEPTED
+  REJECTED
+  PENDING
+  REVIEW
+}
+
+enum UserType {
+  USER
+  ADMIN
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId   Int      @id @default(autoincrement()) @map("user_id")
+  email    String   @unique
+  name     String
+  password String
+  type     UserType @default(USER)
+  thesis   Thesis[]
+}
+
+model Thesis {
+  thesisId      Int      @id @default(autoincrement()) @map("thesis_id")
+  title         String
+  abstract      String
+  primaryAuthor String   @map("primary_author")
+  file          String
+  status        Status   @default(PENDING)
+  volume        Volume   @relation(fields: [volumeId], references: [volumeId])
+  volumeId      Int      @map("volume_id")
+  actionDate    DateTime @map("action_date")
+  user          User     @relation(fields: [uploadedBy], references: [userId])
+  uploadedBy    Int      @map("uploaded_by")
+  authors       Author[]
+  action        Action?
+}
+
+model Volume {
+  volumeId Int      @id @default(autoincrement()) @map("volume_id")
+  volName  String   @map("vol_name")
+  issues   Issues[]
+  Thesis   Thesis[]
+}
+
+model Issues {
+  issueId   Int       @id @default(autoincrement()) @map("issue_id")
+  volume    Volume    @relation(fields: [volumeId], references: [volumeId])
+  volumeId  Int       @map("volume_id")
+  startDate DateTime  @default(now()) @map("start_date")
+  endDate   DateTime? @map("end_date")
+}
+
+model Author {
+  authorId Int    @id @default(autoincrement()) @map("author_id")
+  name     String
+  thesis   Thesis @relation(fields: [thesisId], references: [thesisId])
+  thesisId Int    @map("thesis_id")
+}
+
+model Action {
+  id       Int    @id @default(autoincrement())
+  thesis   Thesis @relation(fields: [thesisId], references: [thesisId])
+  thesisId Int    @unique @map("thesis_id")
+  remarks  String
+}
