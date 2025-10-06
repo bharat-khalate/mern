@@ -98,13 +98,13 @@ This system is designed to:
 
 | Layer         | Technology                     |
 |--------------|---------------------------------|
-| Frontend     | React / Next.js / Tailwind CSS  |
-| Backend      | Node.js / Express / TypeScript  |
+| Frontend     | React + Tailwind CSS +TypeScript |
+| Backend      | Node.js + Express + TypeScript  |
 | Database     | PostgreSQL                      |
 | ORM          | Prisma ORM                      |
 | File Storage | Local                  |
 | Auth         | JWT + bcrypt                    |
-| PDF Viewer   | React-PDF-Viewer / Office Embed |
+| PDF Viewer   | React-PDF-Viewer                |
 | Deployment   | Docker         |
 
 ---
